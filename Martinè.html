@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nacione di Martinè</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background: #fafafa;
+        color: #1a1a1a;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+        background: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 60px 20px 50px;
+        text-align: center;
+    }
+
+    .bandeira {
+        width: 220px;
+        max-width: 70%;
+        height: auto;
+        margin: 0 auto 30px;
+        display: block;
+        border: 1px solid #e5e5e5;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+        font-weight: 400;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        margin-bottom: 12px;
+        word-break: break-word;
+    }
+
+    header .lema {
+        font-size: 0.85em;
+        letter-spacing: 3px;
+        color: #888;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    /* NAVEGAÇÃO */
+    nav {
+        background: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        max-width: 100vw;
+    }
+    nav::-webkit-scrollbar { display: none; }
+
+    .nav-inner {
+        display: flex;
+        gap: 28px;
+        padding: 20px;
+        justify-content: flex-start;
+        width: max-content;
+        min-width: 100%;
+    }
+
+    @media (min-width: 900px) {
+        nav { display: flex; justify-content: center; }
+        .nav-inner { justify-content: center; width: auto; min-width: auto; }
+    }
+
+    nav button {
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: 0.8em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #999;
+        cursor: pointer;
+        padding: 6px 0;
+        border-bottom: 1px solid transparent;
+        transition: 0.3s;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    nav button:hover { color: #1a1a1a; }
+    nav button.ativo { color: #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+
+    main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 70px 25px 90px;
+        width: 100%;
+    }
+
+    .secao { display: none; }
+    .secao.ativa { display: block; animation: fade 0.4s ease; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+    h2 {
+        font-size: 0.8em;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 28px;
+    }
+    h3.subtitulo {
+        font-size: 0.75em;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin: 40px 0 18px;
+    }
+    p { margin-bottom: 18px; color: #333; }
+
+    .dados { border-top: 1px solid #e5e5e5; }
+    .dado {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 0;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 0.95em;
+        gap: 20px;
+    }
+    .dado .rotulo {
+        color: #999;
+        letter-spacing: 1px;
+        font-size: 0.85em;
+        text-transform: uppercase;
+        flex-shrink: 0;
+    }
+    .dado .valor { color: #1a1a1a; text-align: right; word-break: break-word; }
+
+    .provincias { border-top: 1px solid #e5e5e5; }
+    .provincia {
+        padding: 22px 0;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .provincia h3 {
+        font-size: 1em;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin-bottom: 4px;
+        word-break: break-word;
+    }
+    .provincia p { font-size: 0.85em; color: #999; margin: 0; }
+
+    ul.lista-simples {
+        list-style: none;
+        padding: 0;
+        border-top: 1px solid #e5e5e5;
+    }
+    ul.lista-simples li {
+        padding: 18px 0;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 0.95em;
+        color: #333;
+    }
+    ul.lista-simples li strong {
+        display: block;
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #999;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    /* HINO */
+    .hino {
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 50px 30px;
+        margin: 20px 0;
+        text-align: center;
+        background: #ffffff;
+    }
+    .hino .titulo-hino {
+        font-size: 0.75em;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-bottom: 35px;
+    }
+    .hino .verso {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 1.15em;
+        font-style: italic;
+        line-height: 2.2;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+    }
+    .hino .verso-final {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 1.3em;
+        font-style: italic;
+        font-weight: bold;
+        line-height: 2.2;
+        color: #1a1a1a;
+        margin-top: 30px;
+        padding-top: 25px;
+        border-top: 1px solid #e5e5e5;
+        letter-spacing: 1px;
+    }
+    .hino .nota {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-style: normal;
+        font-size: 0.75em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-top: 40px;
+    }
+
+    /* DICIONÁRIO */
+    .busca-dict {
+        width: 100%;
+        padding: 14px 18px;
+        border: 1px solid #e5e5e5;
+        background: #ffffff;
+        font-family: inherit;
+        font-size: 0.95em;
+        color: #1a1a1a;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        transition: 0.3s;
+    }
+    .busca-dict:focus { outline: none; border-color: #1a1a1a; }
+    .busca-dict::placeholder { color: #bbb; letter-spacing: 1px; }
+
+    .seletor-letra {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        margin: 0 auto 35px;
+        padding: 20px 0;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+        max-width: 280px;
+        width: 100%;
+    }
+    .seletor-letra .seta {
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: 1.3em;
+        color: #bbb;
+        cursor: pointer;
+        padding: 8px 18px;
+        transition: 0.25s;
+        line-height: 1;
+        user-select: none;
+    }
+    .seletor-letra .seta:hover { color: #1a1a1a; transform: scale(1.2); }
+    .seletor-letra .seta:active { transform: scale(0.95); }
+    .seletor-letra .seta:disabled { color: #eee; cursor: not-allowed; transform: none; }
+
+    .letra-atual {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-style: italic;
+        font-size: 1.8em;
+        color: #1a1a1a;
+        min-width: 90px;
+        text-align: center;
+        letter-spacing: 1px;
+        line-height: 1;
+        user-select: none;
+    }
+
+    .contador-resultados {
+        font-size: 0.75em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .lista-dict { border-top: 1px solid #e5e5e5; }
+    .entrada-dict {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 14px 0;
+        border-bottom: 1px solid #e5e5e5;
+        gap: 20px;
+    }
+    .entrada-dict .termo {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-style: italic;
+        font-size: 1.05em;
+        color: #1a1a1a;
+        flex-shrink: 0;
+    }
+    .entrada-dict .traducao { font-size: 0.9em; color: #777; text-align: right; }
+
+    .sem-resultado {
+        text-align: center;
+        padding: 60px 20px;
+        color: #bbb;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+    }
+
+    /* INSTITUIÇÕES */
+    .inst-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 30px;
+    }
+    @media (min-width: 600px) {
+        .inst-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .inst-card {
+        background: #ffffff;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 24px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-width: 0;
+    }
+    .inst-card:hover {
+        border-color: #1a1a1a;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .inst-card .inst-sigla {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        font-size: 1.5em;
+        color: #1a1a1a;
+        letter-spacing: 1px;
+    }
+    .inst-card .inst-nome {
+        font-size: 0.72em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #888;
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .inst-card .inst-desc {
+        font-size: 0.88em;
+        color: #777;
+        margin: 8px 0 4px;
+        line-height: 1.5;
+    }
+    .inst-card .inst-link {
+        font-size: 0.7em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        margin-top: auto;
+        padding-top: 12px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .inst-card .inst-link::after { content: "→"; transition: 0.3s; }
+    .inst-card:hover .inst-link::after { transform: translateX(6px); }
+
+    /* MODAL */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(20,20,20,0.55);
+        z-index: 200;
+        backdrop-filter: blur(4px);
+        padding: 16px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .modal-overlay.aberto { display: flex; align-items: flex-start; justify-content: center; }
+
+    .modal {
+        background: #ffffff;
+        max-width: 600px;
+        width: 100%;
+        margin: 40px auto;
+        border-radius: 8px;
+        padding: 40px 30px 32px;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        animation: modalIn 0.3s ease;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+    @keyframes modalIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal .fechar {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        color: #bbb;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        transition: 0.3s;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal .fechar:hover { color: #1a1a1a; background: #f5f5f5; }
+
+    .modal h3 {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        font-size: 1.5em;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+        padding-right: 40px;
+        word-break: break-word;
+    }
+    .modal .modal-sub {
+        font-size: 0.72em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-bottom: 28px;
+        line-height: 1.5;
+    }
+
+    /* Botão de "Saiba mais" dentro do modal */
+    .btn-saiba-mais {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 18px 20px;
+        font-family: inherit;
+        font-size: 0.85em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+        text-align: left;
+    }
+    .btn-saiba-mais:hover {
+        background: #1a1a1a;
+        color: #ffffff;
+        border-color: #1a1a1a;
+    }
+    .btn-saiba-mais .seta-btn {
+        font-size: 1.2em;
+        transition: 0.3s;
+    }
+    .btn-saiba-mais.aberto .seta-btn { transform: rotate(90deg); }
+
+    .painel-expansivel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .painel-expansivel.aberto {
+        max-height: 4000px;
+        padding-top: 22px;
+    }
+
+    /* PREVISÃO DO TEMPO */
+    .tempo-box {
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 28px 20px;
+        text-align: center;
+        margin: 18px 0;
+    }
+    .tempo-icone { font-size: 3em; margin-bottom: 10px; }
+    .tempo-condicao {
+        font-family: 'Georgia', serif;
+        font-size: 1.3em;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+    }
+    .tempo-info {
+        font-size: 0.85em;
+        color: #888;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        line-height: 1.7;
+    }
+    .btn-primario {
+        background: #1a1a1a;
+        color: #ffffff;
+        border: none;
+        padding: 12px 28px;
+        font-family: inherit;
+        font-size: 0.78em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+        max-width: 280px;
+    }
+    .btn-primario:hover { background: #333; }
+    .btn-primario:active { transform: scale(0.97); }
+
+    /* NÍVEIS DE ALERTA — BRANCO CORRIGIDO */
+    .niveis-alerta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+    }
+    .nivel {
+        padding: 16px 8px;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 0.72em;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 1.3;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        border: 2px solid transparent;
+    }
+    /* Nível branco: fundo branco puro, texto escuro, borda cinza */
+    .nivel.branco {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        border: 2px solid #999999 !important;
+    }
+    .nivel.azul { background: #4a90d9; color: #ffffff; border-color: #357ab8; }
+    .nivel.amarelo { background: #e6b800; color: #1a1a1a; border-color: #c9a100; }
+    .nivel.vermelho { background: #d9432b; color: #ffffff; border-color: #b53520; }
+    .nivel.preto { background: #1a1a1a; color: #ffffff; border-color: #000000; }
+
+    /* TABELAS DE EXPLICAÇÃO DOS ALERTAS */
+    .tabela-alertas {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0 24px;
+        font-size: 0.82em;
+    }
+    .tabela-alertas th {
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 10px 8px;
+        text-align: left;
+        font-size: 0.75em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    .tabela-alertas td {
+        padding: 10px 8px;
+        border-bottom: 1px solid #e5e5e5;
+        vertical-align: top;
+    }
+    .tabela-alertas tr:nth-child(even) td { background: #fafafa; }
+
+    .alerta-titulo-secao {
+        font-size: 0.78em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #888;
+        margin: 28px 0 10px;
+        font-weight: 600;
+    }
+    .alerta-subtitulo {
+        font-size: 0.72em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin: 18px 0 6px;
+        font-weight: 500;
+    }
+
+    /* CONVERSOR */
+    .conversor {
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 25px 20px;
+        margin: 20px 0;
+    }
+    .conversor-linha {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+    .conversor input, .conversor select {
+        font-family: inherit;
+        font-size: 0.95em;
+        padding: 12px 14px;
+        border: 1px solid #e5e5e5;
+        background: #ffffff;
+        border-radius: 4px;
+        color: #1a1a1a;
+        width: 100%;
+    }
+    .conversor input:focus, .conversor select:focus { outline: none; border-color: #1a1a1a; }
+    .conversor .resultado-conv {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        font-size: 1.15em;
+        color: #1a1a1a;
+        text-align: center;
+        padding: 18px 0 8px;
+        border-top: 1px solid #e5e5e5;
+        margin-top: 14px;
+        word-break: break-word;
+    }
+    .conversor .resultado-conv small {
+        display: block;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-style: normal;
+        font-size: 0.6em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-top: 8px;
+        line-height: 1.6;
+    }
+
+    @media (min-width: 500px) {
+        .conversor-linha { flex-wrap: nowrap; }
+        .conversor input { flex: 1; width: auto; }
+        .conversor select { width: auto; }
+    }
+
+    .info-block {
+        padding: 16px 0;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 0.92em;
+        word-break: break-word;
+    }
+    .info-block strong {
+        display: block;
+        font-size: 0.75em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #999;
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+
+    .bandeira-grande {
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto 40px;
+        display: block;
+        border: 1px solid #e5e5e5;
+    }
+
+    /* NOTÍCIA */
+    .noticia {
+        background: #ffffff;
+        border-left: 3px solid #1a1a1a;
+        padding: 20px 22px;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+    .noticia .data {
+        font-size: 0.7em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-bottom: 8px;
+    }
+    .noticia h4 {
+        font-family: 'Georgia', serif;
+        font-size: 1.1em;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+        line-height: 1.4;
+    }
+    .noticia p { font-size: 0.9em; color: #666; margin: 0; }
+
+    footer {
+        border-top: 1px solid #e5e5e5;
+        padding: 40px 20px;
+        text-align: center;
+        font-size: 0.75em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+        header { padding: 40px 20px 35px; }
+        header h1 { font-size: 1.05em; letter-spacing: 3px; }
+        header .lema { font-size: 0.75em; letter-spacing: 2px; }
+        .nav-inner { gap: 20px; padding: 18px 20px; }
+        nav button { font-size: 0.68em; letter-spacing: 1.5px; }
+        main { padding: 50px 18px 70px; }
+        .dado { flex-direction: column; gap: 4px; }
+        .dado .valor { text-align: left; }
+        .hino { padding: 35px 15px; }
+        .hino .verso { font-size: 1em; line-height: 2; }
+        .hino .verso-final { font-size: 1.1em; line-height: 2; }
+        .entrada-dict { flex-direction: column; gap: 4px; }
+        .entrada-dict .traducao { text-align: left; }
+        .seletor-letra { max-width: 240px; }
+        .letra-atual { font-size: 1.5em; min-width: 70px; }
+        .seletor-letra .seta { padding: 8px 14px; font-size: 1.1em; }
+        .modal { padding: 35px 20px 25px; margin: 20px auto; }
+        .modal h3 { font-size: 1.25em; }
+        .modal .fechar { top: 8px; right: 8px; }
+        .btn-saiba-mais { font-size: 0.75em; padding: 16px 16px; }
+        .tempo-box { padding: 22px 15px; }
+        .tempo-icone { font-size: 2.5em; }
+        .niveis-alerta { grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 8px; }
+        .nivel { padding: 14px 6px; font-size: 0.65em; }
+        .tabela-alertas { font-size: 0.72em; }
+        .tabela-alertas th, .tabela-alertas td { padding: 8px 5px; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="bandeira">
+        <svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id="destello" d="M 0,-40 C 1.5,-12 6,-4 30,0 C 6,4 1.5,12 0,40 C -1.5,12 -6,4 -30,0 C -6,-4 -1.5,-12 0,-40 Z"/>
+                <polygon id="estrela5" points="0,-10 2.9,-3.1 9.5,-3.1 4.2,1.2 6.2,8.1 0,3.5 -6.2,8.1 -4.2,1.2 -9.5,-3.1 -2.9,-3.1"/>
+            </defs>
+            <rect width="720" height="720" fill="#0000EE"/>
+            <g transform="translate(360,360) rotate(-45)">
+                <rect x="-600" y="-100" width="1200" height="200" fill="#FFE000"/>
+                <text x="0" y="0"
+                      font-family="'Times New Roman', 'Georgia', serif"
+                      font-size="82" font-style="italic" font-weight="bold"
+                      fill="#000000" text-anchor="middle" dominant-baseline="central"
+                      letter-spacing="-1">Nacione di Martinè</text>
+            </g>
+            <g transform="translate(95,120) scale(1.05)"><use href="#destello" fill="#FFFFFF"/></g>
+            <g transform="translate(160,180) scale(0.95)"><use href="#destello" fill="#FFFFFF"/></g>
+            <g transform="translate(230,235) scale(0.85)"><use href="#destello" fill="#FFFFFF"/></g>
+            <g transform="translate(200,105) scale(0.95)"><use href="#estrela5" fill="#FFE000"/></g>
+            <g transform="translate(230,150) scale(0.85)"><use href="#estrela5" fill="#FFE000"/></g>
+            <g transform="translate(70,205) scale(0.85)"><use href="#estrela5" fill="#FFE000"/></g>
+            <g transform="translate(115,265) scale(0.85)"><use href="#estrela5" fill="#FFE000"/></g>
+        </svg>
+    </div>
+    <h1>Nacione di Martinè</h1>
+    <p class="lema">Avante, sempre Avante</p>
+</header>
+
+<nav>
+    <div class="nav-inner">
+        <button class="ativo" onclick="mostrar('sobre', this)">Sobre</button>
+        <button onclick="mostrar('populacao', this)">População</button>
+        <button onclick="mostrar('territorio', this)">Território</button>
+        <button onclick="mostrar('leis', this)">Leis</button>
+        <button onclick="mostrar('economia', this)">Economia</button>
+        <button onclick="mostrar('instituicoes', this)">Instituições</button>
+        <button onclick="mostrar('hino', this)">Hino</button>
+        <button onclick="mostrar('dicionario', this)">Dicionário</button>
+    </div>
+</nav>
+
+<main>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="secao ativa">
+        <h2>Identidade Nacional</h2>
+        <p>Martinè é uma nação soberana fundada em 25 de outubro de 2026, regida pelos princípios da fraternidade, da fé católica e da união entre seus cidadãos.</p>
+
+        <div class="dados">
+            <div class="dado"><span class="rotulo">Nome</span><span class="valor">Martinè</span></div>
+            <div class="dado"><span class="rotulo">Lema</span><span class="valor">Avante, sempre avante</span></div>
+            <div class="dado"><span class="rotulo">Hino</span><span class="valor">Hino di Martinè</span></div>
+            <div class="dado"><span class="rotulo">Línguas</span><span class="valor">Português + Martinè</span></div>
+            <div class="dado"><span class="rotulo">Moeda</span><span class="valor">Rúpia Martinesa (rm.)</span></div>
+            <div class="dado"><span class="rotulo">Câmbio</span><span class="valor">1 rm. = 15 ¥ ≈ R$ 0,49</span></div>
+            <div class="dado"><span class="rotulo">Religião</span><span class="valor">Catolicismo (2 de 4 habitantes)</span></div>
+            <div class="dado"><span class="rotulo">Fundação</span><span class="valor">25 de Outubro de 2026</span></div>
+        </div>
+
+        <h3 class="subtitulo">Notícias</h3>
+        <div class="noticia">
+            <div class="data">Boletim Oficial</div>
+            <h4>Frater Maior interditado por alagamento na região</h4>
+            <p>A província de Frater Maior encontra-se oficialmente interditada devido ao alagamento de seu território. O acesso é restrito até que as condições sejam normalizadas.</p>
+        </div>
+    </section>
+
+    <!-- POPULAÇÃO -->
+    <section id="populacao" class="secao">
+        <h2>População</h2>
+        <p>Martinè conta atualmente com <strong>4 habitantes</strong> distribuídos entre suas províncias.</p>
+
+        <h3 class="subtitulo">Habitantes</h3>
+        <div class="dados">
+            <div class="dado"><span class="rotulo">SA01</span><span class="valor">Terrè di Saint Agostino di Hipona</span></div>
+            <div class="dado"><span class="rotulo">TI02</span><span class="valor">Trinitas Independentiae</span></div>
+            <div class="dado"><span class="rotulo">TI03</span><span class="valor">Trinitas Independentiae</span></div>
+            <div class="dado"><span class="rotulo">TI04</span><span class="valor">Trinitas Independentiae</span></div>
+        </div>
+
+        <h3 class="subtitulo">Indicadores</h3>
+        <div class="dados">
+            <div class="dado"><span class="rotulo">População</span><span class="valor">4 habitantes</span></div>
+            <div class="dado"><span class="rotulo">Densidade</span><span class="valor">405.200 hab/km²</span></div>
+            <div class="dado"><span class="rotulo">Posição Mundial</span><span class="valor">1º lugar</span></div>
+            <div class="dado"><span class="rotulo">Esportes</span><span class="valor">100% (futebol e xadrez)</span></div>
+            <div class="dado"><span class="rotulo">Raças</span><span class="valor">Amarela: 1 · A definir: 3</span></div>
+        </div>
+    </section>
+
+    <!-- TERRITÓRIO -->
+    <section id="territorio" class="secao">
+        <h2>Território</h2>
+        <p>Dividida em quatro províncias, com área total de <strong>9,8722 m²</strong>.</p>
+
+        <div class="provincias">
+            <div class="provincia"><h3>Terrè di Saint Agostino di Hipona</h3><p>1,8754 m² · Código SA · Território Principal</p></div>
+            <div class="provincia"><h3>Frater Parvus</h3><p>0,6668 m² · Código FP · Exclave (inclui o Território das Plantas)</p></div>
+            <div class="provincia"><h3>Frater Maior</h3><p>6,79 m² · Código FM · Exclave — 🚫 Interditado (alagado)</p></div>
+            <div class="provincia"><h3>Trinitas Independentiae</h3><p>0,54 m² · Código TI · 🏛️ Capital</p></div>
+            <div class="provincia" style="border-left: 3px solid #1a1a1a; padding-left: 22px;">
+                <h3>Área Total</h3>
+                <p>9,8722 m²</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEIS (SEM PENALIDADES) -->
+    <section id="leis" class="secao">
+        <h2>Leis Fundamentais</h2>
+        <p>A nação se rege por quatro leis fundamentais.</p>
+
+        <h3 class="subtitulo">As Quatro Leis</h3>
+        <ul class="lista-simples">
+            <li><strong>Lei 1</strong>Não matar</li>
+            <li><strong>Lei 2</strong>Não agredir</li>
+            <li><strong>Lei 3</strong>Não roubar</li>
+            <li><strong>Lei 4</strong>Não ofender</li>
+        </ul>
+    </section>
+
+    <!-- ECONOMIA -->
+    <section id="economia" class="secao">
+        <h2>Economia</h2>
+        <p>A economia martinesa baseia-se na <strong>Rúpia Martinesa (rm.)</strong>.</p>
+
+        <div class="dados">
+            <div class="dado"><span class="rotulo">Moeda</span><span class="valor">Rúpia Martinesa (rm.)</span></div>
+            <div class="dado"><span class="rotulo">Câmbio</span><span class="valor">1 rm. = 15 ¥ ≈ R$ 0,49</span></div>
+            <div class="dado"><span class="rotulo">Em Circulação</span><span class="valor">16 moedas = 334,90 rm.</span></div>
+            <div class="dado"><span class="rotulo">A Produzir</span><span class="valor">4 (100, 10, 1, 0,50 rm.)</span></div>
+            <div class="dado"><span class="rotulo">Total após Produção</span><span class="valor">446,40 rm.</span></div>
+            <div class="dado"><span class="rotulo">Por Habitante</span><span class="valor">111,60 rm.</span></div>
+            <div class="dado"><span class="rotulo">PIB</span><span class="valor">334,90 rm.</span></div>
+            <div class="dado"><span class="rotulo">PIB per capita</span><span class="valor">83,72 rm.</span></div>
+            <div class="dado"><span class="rotulo">Dívida Pública</span><span class="valor">0 rm. (0% do PIB)</span></div>
+        </div>
+
+        <h3 class="subtitulo">Conversor de Moedas</h3>
+        <div class="conversor">
+            <div class="conversor-linha">
+                <input type="number" id="valorConv" value="1" step="0.01" min="0" oninput="converter()">
+                <select id="moedaOrigem" onchange="converter()">
+                    <option value="rm">rm. (Rúpia)</option>
+                    <option value="yen">¥ (Iene)</option>
+                    <option value="brl">R$ (Real)</option>
+                </select>
+            </div>
+            <div style="text-align:center; color:#bbb; font-size:0.8em; letter-spacing:2px;">▼</div>
+            <div class="conversor-linha" style="margin-top:12px;">
+                <input type="text" id="valorDestino" readonly style="background:#f5f5f5; color:#1a1a1a; font-weight:bold;">
+                <select id="moedaDestino" onchange="converter()">
+                    <option value="rm">rm. (Rúpia)</option>
+                    <option value="yen" selected>¥ (Iene)</option>
+                    <option value="brl">R$ (Real)</option>
+                </select>
+            </div>
+            <div class="resultado-conv" id="resultadoConv">
+                1 rm. = 15,00 ¥
+                <small>Taxa fixa · 1 rm. = 15 ¥ ≈ R$ 0,49</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTITUIÇÕES -->
+    <section id="instituicoes" class="secao">
+        <h2>Instituições</h2>
+        <p>Órgãos oficiais da Nacione di Martinè.</p>
+
+        <div class="inst-grid">
+            <div class="inst-card" onclick="abrirModal('modalAMM')">
+                <div class="inst-sigla">AMM</div>
+                <div class="inst-nome">Agência Meteorológica de Martinè</div>
+                <div class="inst-desc">Previsão do tempo, alertas e monitoramento climático.</div>
+                <div class="inst-link"><span>Saiba mais</span></div>
+            </div>
+
+            <div class="inst-card" onclick="abrirModal('modalIMDSE')">
+                <div class="inst-sigla">IMDSE</div>
+                <div class="inst-nome">Instituto Martinè de Dados Sociais e Económicos</div>
+                <div class="inst-desc">Registro de dados populacionais e económicos.</div>
+                <div class="inst-link"><span>Saiba mais</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HINO -->
+    <section id="hino" class="secao">
+        <h2>Hino di Martinè</h2>
+        <div class="hino">
+            <div class="titulo-hino">Hino Nacional</div>
+            <div class="verso">Nostri nacione è conosché</div>
+            <div class="verso">Miracoli ché è di tutti rassè</div>
+            <div class="verso">Independenza è ché noi avi</div>
+            <div class="verso">Avi molta paccioni i è rispetatto</div>
+            <div class="verso-final">Martinè, avanzato, sempre avanzato</div>
+            <div class="nota">✦ Hino Oficial da Nacione di Martinè ✦</div>
+        </div>
+    </section>
+
+    <!-- DICIONÁRIO -->
+    <section id="dicionario" class="secao">
+        <h2>Dicionário Martinè ↔ Português</h2>
+        <p style="color:#666; font-size:0.9em; margin-bottom:25px;">Língua artificial inspirada em línguas românicas.</p>
+
+        <input type="text" id="buscaDict" class="busca-dict" placeholder="Buscar em Martinè ou em Português..." oninput="filtrarDicionario()">
+
+        <div class="seletor-letra">
+            <button class="seta" id="setaEsq" onclick="mudarLetra(-1)">←</button>
+            <div class="letra-atual" id="letraAtual">Todas</div>
+            <button class="seta" id="setaDir" onclick="mudarLetra(1)">→</button>
+        </div>
+
+        <div class="contador-resultados" id="contadorResultados"></div>
+        <div class="lista-dict" id="listaDict"></div>
+    </section>
+
+</main>
+
+<!-- ============ MODAL AMM ============ -->
+<div class="modal-overlay" id="modalAMM" onclick="fecharModal(event, 'modalAMM')">
+    <div class="modal" onclick="event.stopPropagation()">
+        <button class="fechar" onclick="fecharModalDireto('modalAMM')">×</button>
+        <h3>AMM</h3>
+        <div class="modal-sub">Agência Meteorológica de Martinè</div>
+
+        <div class="info-block">
+            <strong>Fundação</strong>
+            28 de Setembro de 2026
+        </div>
+        <div class="info-block" style="border-bottom:none;">
+            <strong>Missão</strong>
+            Monitorar e prever as condições meteorológicas da nação, emitindo alertas e boletins regulares à população.
+        </div>
+
+        <!-- BOTÃO: PREVISÃO DO TEMPO -->
+        <button class="btn-saiba-mais" onclick="togglePainel(this, 'painelTempo')">
+            <span>Previsão do Tempo</span>
+            <span class="seta-btn">›</span>
+        </button>
+        <div class="painel-expansivel" id="painelTempo">
+            <div class="tempo-box">
+                <div class="tempo-icone" id="tempoIcone">☀️</div>
+                <div class="tempo-condicao" id="tempoCondicao">Sol</div>
+                <div class="tempo-info" id="tempoInfo">Modelo de Markov</div>
+                <button class="btn-primario" onclick="gerarPrevisao()">Gerar Nova Previsão</button>
+            </div>
+        </div>
+
+        <!-- BOTÃO: NÍVEIS DE ALERTA -->
+        <button class="btn-saiba-mais" onclick="togglePainel(this, 'painelAlertas')">
+            <span>Níveis de Alerta</span>
+            <span class="seta-btn">›</span>
+        </button>
+        <div class="painel-expansivel" id="painelAlertas">
+
+            <!-- ESCALA DE NÍVEIS -->
+            <div class="niveis-alerta">
+                <div class="nivel branco">Branco</div>
+                <div class="nivel azul">Azul</div>
+                <div class="nivel amarelo">Amarelo</div>
+                <div class="nivel vermelho">Vermelho</div>
+                <div class="nivel preto">Preto</div>
+            </div>
+
+            <!-- EXPLICAÇÃO GERAL -->
+            <div class="alerta-titulo-secao">🚨 Sistema de Alertas da AMM</div>
+            <p style="font-size:0.85em; color:#666; margin-bottom:10px;">A AMM usa <strong>5 níveis de alerta</strong>, identificados por cores, que indicam o grau de perigo de um fenómeno meteorológico.</p>
+
+            <table class="tabela-alertas">
+                <thead>
+                    <tr>
+                        <th>Nível</th>
+                        <th>Cor</th>
+                        <th>Significado</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>⚪ Branco</td><td>Nenhum perigo</td><td>Atividades normais</td></tr>
+                    <tr><td>2</td><td>🔵 Azul</td><td>Leve</td><td>Atenção básica</td></tr>
+                    <tr><td>3</td><td>🟡 Amarelo</td><td>Atenção</td><td>Monitorizar e preparar</td></tr>
+                    <tr><td>4</td><td>🔴 Vermelho</td><td>Siga os informes imediatamente</td><td>Ação imediata conforme orientação</td></tr>
+                    <tr><td>5</td><td>⚫ Preto</td><td>Risco grande e impactos ao ambiente e pessoas</td><td>Evacuação e proteção máxima</td></tr>
+                </tbody>
+            </table>
+
+            <!-- PROTOCOLOS POR FENÓMENO -->
+            <div class="alerta-titulo-secao">🌪️ Como os alertas são aplicados por fenómeno</div>
+
+            <div class="alerta-subtitulo">1. Tufões / Tempestades</div>
+            <table class="tabela-alertas">
+                <thead><tr><th>Alerta</th><th>Situação</th></tr></thead>
+                <tbody>
+                    <tr><td>⚪ Branco</td><td>Nenhum perigo</td></tr>
+                    <tr><td>🔵 Azul</td><td>Perigo leve</td></tr>
+                    <tr><td>🟡 Amarelo</td><td>Atenção</td></tr>
+                    <tr><td>🔴 Vermelho</td><td>Siga os informes</td></tr>
+                    <tr><td>⚫ Preto</td><td>Risco grande</td></tr>
+                </tbody>
+            </table>
+
+            <div class="alerta-subtitulo">2. Terremotos (Escala Richter)</div>
+            <table class="tabela-alertas">
+                <thead><tr><th>Alerta</th><th>Magnitude</th></tr></thead>
+                <tbody>
+                    <tr><td>⚪ Branco</td><td>&lt; 1,5</td></tr>
+                    <tr><td>🔵 Azul</td><td>&lt; 2,0</td></tr>
+                    <tr><td>🟡 Amarelo</td><td>&lt; 3,0</td></tr>
+                    <tr><td>🔴 Vermelho</td><td>&lt; 4,0</td></tr>
+                    <tr><td>⚫ Preto</td><td>&gt; 4,1</td></tr>
+                </tbody>
+            </table>
+
+            <div class="alerta-subtitulo">3. Tsunamis (Altura das ondas)</div>
+            <table class="tabela-alertas">
+                <thead><tr><th>Alerta</th><th>Altura</th></tr></thead>
+                <tbody>
+                    <tr><td>⚪ Branco</td><td>&lt; 0,25 m</td></tr>
+                    <tr><td>🔵 Azul</td><td>&lt; 0,35 m</td></tr>
+                    <tr><td>🟡 Amarelo</td><td>&lt; 0,50 m</td></tr>
+                    <tr><td>🔴 Vermelho</td><td>&lt; 1,00 m</td></tr>
+                    <tr><td>⚫ Preto</td><td>&gt; 1,00 m</td></tr>
+                </tbody>
+            </table>
+
+            <!-- TERRITÓRIO -->
+            <div class="alerta-titulo-secao">📍 Como os alertas são aplicados por território</div>
+            <p style="font-size:0.85em; color:#666; margin-bottom:10px;">Cada província de Martinè pode ter um alerta <strong>diferente</strong>, conforme a sua localização e vulnerabilidade.</p>
+            <table class="tabela-alertas">
+                <thead><tr><th>Província</th><th>Característica</th><th>Alerta típico</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>SA</strong></td><td>Terrè di Saint Agostino di Hipona — Território Principal</td><td>Conforme o fenómeno</td></tr>
+                    <tr><td><strong>FP</strong></td><td>Frater Parvus — Exclave com produção agrícola</td><td>Mais vulnerável</td></tr>
+                    <tr><td><strong>FM</strong></td><td>Frater Maior — Exclave, 45,4 m de altitude</td><td>Menos vulnerável a tsunamis</td></tr>
+                    <tr><td><strong>TI</strong></td><td>Trinitas Independentiae — Capital, 0,54 m²</td><td>Conforme o fenómeno</td></tr>
+                </tbody>
+            </table>
+
+            <!-- O QUE FAZER -->
+            <div class="alerta-titulo-secao">💡 O que fazer em cada alerta</div>
+            <table class="tabela-alertas">
+                <thead><tr><th>Alerta</th><th>O que fazer</th></tr></thead>
+                <tbody>
+                    <tr><td>⚪ Branco</td><td>Nada — atividades normais</td></tr>
+                    <tr><td>🔵 Azul</td><td>Manter atenção básica</td></tr>
+                    <tr><td>🟡 Amarelo</td><td>Monitorizar, preparar medidas</td></tr>
+                    <tr><td>🔴 Vermelho</td><td>Agir imediatamente conforme os informes</td></tr>
+                    <tr><td>⚫ Preto</td><td>Evacuar, proteger pessoas e bens</td></tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- BOTÃO: OBSERVAÇÕES CLIMÁTICAS -->
+        <button class="btn-saiba-mais" onclick="togglePainel(this, 'painelObs')">
+            <span>Observações Climáticas</span>
+            <span class="seta-btn">›</span>
+        </button>
+        <div class="painel-expansivel" id="painelObs">
+            <div class="info-block">
+                <strong>Picos de Temperatura</strong>
+                11:00–16:00 · máximo entre 13:00–14:00
+            </div>
+            <div class="info-block" style="border-bottom:none;">
+                <strong>Estação das Chuvas</strong>
+                Autún (Outono)
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ MODAL IMDSE ============ -->
+<div class="modal-overlay" id="modalIMDSE" onclick="fecharModal(event, 'modalIMDSE')">
+    <div class="modal" onclick="event.stopPropagation()">
+        <button class="fechar" onclick="fecharModalDireto('modalIMDSE')">×</button>
+        <h3>IMDSE</h3>
+        <div class="modal-sub">Instituto Martinè de Dados Sociais e Económicos</div>
+
+        <div class="info-block">
+            <strong>Fundação</strong>
+            29 de Setembro de 2026
+        </div>
+        <div class="info-block" style="border-bottom:none;">
+            <strong>Missão</strong>
+            Recolher, organizar e divulgar dados oficiais sobre a população, economia e sociedade martinesa.
+        </div>
+
+        <button class="btn-saiba-mais" onclick="togglePainel(this, 'painelDados')">
+            <span>Dados Registados</span>
+            <span class="seta-btn">›</span>
+        </button>
+        <div class="painel-expansivel" id="painelDados">
+            <ul class="lista-simples">
+                <li><strong>População</strong>Número de habitantes e distribuição por província</li>
+                <li><strong>Densidade</strong>Cálculo da densidade populacional</li>
+                <li><strong>PIB</strong>Produto Interno Bruto e PIB per capita</li>
+                <li><strong>Esportes</strong>Práticas esportivas da população</li>
+                <li><strong>Línguas</strong>Línguas oficiais e faladas</li>
+                <li><strong>Religião</strong>Confissões religiosas dos habitantes</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>© 2026 Nacione di Martinè</footer>
+
+<script>
+    function mostrar(id, botao) {
+        document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('ativo'));
+        document.getElementById(id).classList.add('ativa');
+        botao.classList.add('ativo');
+        botao.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ============ MODAIS ============
+    function abrirModal(id) {
+        document.getElementById(id).classList.add('aberto');
+        document.body.style.overflow = 'hidden';
+    }
+    function fecharModal(event, id) {
+        if (event.target.id === id) fecharModalDireto(id);
+    }
+    function fecharModalDireto(id) {
+        document.getElementById(id).classList.remove('aberto');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.aberto').forEach(m => {
+                m.classList.remove('aberto');
+                document.body.style.overflow = '';
+            });
+        }
+    });
+
+    // ============ PAINÉIS EXPANSÍVEIS (Saiba mais) ============
+    function togglePainel(botao, idPainel) {
+        const painel = document.getElementById(idPainel);
+        const aberto = painel.classList.contains('aberto');
+
+        if (aberto) {
+            painel.classList.remove('aberto');
+            botao.classList.remove('aberto');
+        } else {
+            painel.classList.add('aberto');
+            botao.classList.add('aberto');
+        }
+    }
+
+    // ============ MARKOV — PREVISÃO DO TEMPO ============
+    const estados = {
+        "Sol":            { "Sol": 0.55, "Sol com nuvens": 0.30, "Nublado": 0.13, "Chuva": 0.02 },
+        "Sol com nuvens": { "Sol": 0.35, "Sol com nuvens": 0.30, "Nublado": 0.22, "Chuva": 0.13 },
+        "Nublado":        { "Sol": 0.15, "Sol com nuvens": 0.30, "Nublado": 0.30, "Chuva": 0.25 },
+        "Chuva":          { "Sol": 0.10, "Sol com nuvens": 0.25, "Nublado": 0.35, "Chuva": 0.30 }
+    };
+
+    const icones = {
+        "Sol": "☀️",
+        "Sol com nuvens": "🌤️",
+        "Nublado": "☁️",
+        "Chuva": "🌧️"
+    };
+
+    let estadoAtual = "Sol com nuvens";
+
+    function proximoEstado(atual) {
+        const r = Math.random();
+        let acumulado = 0;
+        for (const [estado, prob] of Object.entries(estados[atual])) {
+            acumulado += prob;
+            if (r <= acumulado) return estado;
+        }
+        return atual;
+    }
+
+    function gerarPrevisao() {
+        const previsao = [];
+        let estado = estadoAtual;
+        for (let i = 0; i < 3; i++) {
+            estado = proximoEstado(estado);
+            previsao.push(estado);
+        }
+        estadoAtual = previsao[previsao.length - 1];
+
+        const atual = previsao[0];
+        const proximo = previsao[1];
+        const depois = previsao[2];
+
+        const ordem = ["Chuva", "Nublado", "Sol com nuvens", "Sol"];
+        const tendencia = ordem.indexOf(proximo) > ordem.indexOf(atual) ? "↑ Melhoria"
+                        : ordem.indexOf(proximo) < ordem.indexOf(atual) ? "↓ Piora"
+                        : "→ Estável";
+
+        document.getElementById('tempoIcone').textContent = icones[atual];
+        document.getElementById('tempoCondicao').textContent = atual;
+        document.getElementById('tempoInfo').innerHTML =
+            `Tendência: <strong>${tendencia}</strong><br>Próximo: ${icones[proximo]} ${proximo}<br>Depois: ${icones[depois]} ${depois}`;
+    }
+
+    gerarPrevisao();
+
+    // ============ CONVERSOR DE MOEDAS ============
+    const taxas = {
+        rm:  1,
+        yen: 1 / 15,
+        brl: 1 / 0.49
+    };
+    const simbolos = { rm: "rm.", yen: "¥", brl: "R$" };
+
+    function converter() {
+        const valor = parseFloat(document.getElementById('valorConv').value) || 0;
+        const origem = document.getElementById('moedaOrigem').value;
+        const destino = document.getElementById('moedaDestino').value;
+
+        const emRm = valor * taxas[origem];
+        const resultado = emRm / taxas[destino];
+
+        document.getElementById('valorDestino').value =
+            resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + simbolos[destino];
+
+        document.getElementById('resultadoConv').innerHTML =
+            `${valor.toLocaleString('pt-BR')} ${simbolos[origem]} = ${resultado.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${simbolos[destino]}
+            <small>Taxa fixa · 1 rm. = 15 ¥ ≈ R$ 0,49</small>`;
+    }
+    converter();
+
+    // ============ DICIONÁRIO ============
+    const dicionario = [
+        { m: "Abitri", p: "Morar / Habitar" }, { m: "Abri", p: "Abrir" }, { m: "Acchi", p: "Aqui" },
+        { m: "Acessivo", p: "Barato" }, { m: "Acordatto", p: "Acordado / Desperto" }, { m: "Acqua", p: "Água" },
+        { m: "Achiveri", p: "Comprar" }, { m: "Acquarello", p: "Aquarela" }, { m: "Adesivér", p: "Adesivo / Fita" },
+        { m: "Afiastari", p: "Afastar" }, { m: "Aiutá", p: "Ajuda / Socorro" }, { m: "Ajedrez", p: "Xadrez" },
+        { m: "Alface", p: "Alface" }, { m: "Alimento", p: "Alimento" }, { m: "Almociari", p: "Almoçar" },
+        { m: "Alto / Alta", p: "Alto(a)" }, { m: "Amagna", p: "Amanhã" }, { m: "Amareglio", p: "Amarelo" },
+        { m: "Amargour", p: "Amargor" }, { m: "Amari", p: "Amar" }, { m: "Amén", p: "Amém" },
+        { m: "Americo", p: "América" }, { m: "Amico", p: "Amigo" }, { m: "Amour", p: "Amor" },
+        { m: "Ananás", p: "Abacaxi" }, { m: "Andia", p: "Andar / Ir" }, { m: "Angelico", p: "Anjo" },
+        { m: "Anglia", p: "Inglaterra" }, { m: "Ângulo", p: "Ângulo" }, { m: "Animale", p: "Animal" },
+        { m: "Anno", p: "Ano" }, { m: "Aranché", p: "Laranja" }, { m: "Arbore", p: "Árvore" },
+        { m: "Argentina", p: "Argentina" }, { m: "Arméur", p: "Arma" }, { m: "Aroschè", p: "Arroz" },
+        { m: "Arrivi", p: "Chegar" }, { m: "Arrivi recente", p: "Recém-chegado" }, { m: "Art", p: "Arte" },
+        { m: "Ascolti", p: "Escutar" }, { m: "Assassinét", p: "Assassino" }, { m: "Assassinatéur", p: "Assassinato" },
+        { m: "Assim", p: "Assim" }, { m: "Autobus", p: "Ônibus" }, { m: "Autún", p: "Outono" },
+        { m: "Avanzato", p: "Avançado" }, { m: "Ave", p: "Ave / Pássaro" }, { m: "Avi", p: "Ter" },
+        { m: "Avizzo", p: "Aviso" }, { m: "Avizzo di emergenza", p: "Aviso de emergência" }, { m: "Azziato", p: "Azedo" },
+        { m: "Bacteria", p: "Bactéria" }, { m: "Bagagem", p: "Bagagem" }, { m: "Baixo / Baixa", p: "Baixo(a)" },
+        { m: "Balcone", p: "Balcão" }, { m: "Balenna", p: "Baleia" }, { m: "Ballanzatto", p: "Balança" },
+        { m: "Balle", p: "Baile" }, { m: "Balle di masqué", p: "Baile de máscaras" }, { m: "Balli", p: "Dançar" },
+        { m: "Bandera", p: "Bandeira" }, { m: "Bebida", p: "Bebida" }, { m: "Bello / Bella", p: "Bonito(a)" },
+        { m: "Bevi", p: "Beber" }, { m: "Billonéur", p: "Bilionário" }, { m: "Bispo", p: "Bispo" },
+        { m: "Blanc", p: "Branco" }, { m: "Blanc Arméur", p: "Arma branca" }, { m: "Blú", p: "Azul" },
+        { m: "Boca", p: "Boca" }, { m: "Brasil", p: "Brasil" }, { m: "Buon dia", p: "Bom dia" },
+        { m: "Buona notte", p: "Boa noite" }, { m: "Buon vischito", p: "Bem-vindo" }, { m: "Cabezza", p: "Cabeça" },
+        { m: "Cactus", p: "Cacto" }, { m: "Cada", p: "Cada" }, { m: "Caffè", p: "Café" },
+        { m: "Cairé", p: "Cair" }, { m: "Calcio", p: "Futebol" }, { m: "Calice", p: "Cálice" },
+        { m: "Callate", p: "Cala-se / Silêncio" }, { m: "Canada", p: "Canadá" }, { m: "Cane", p: "Cachorro" },
+        { m: "Canzatto", p: "Cansado" }, { m: "Capital", p: "Capital" }, { m: "Carne", p: "Carne" },
+        { m: "Carro", p: "Carro" }, { m: "Carrot", p: "Cenoura" }, { m: "Casa", p: "Casa / Cômodo" },
+        { m: "Casa da letto", p: "Quarto" }, { m: "Castello", p: "Castelo" }, { m: "Catorze", p: "14" },
+        { m: "Cavallo", p: "Cavalo" }, { m: "Cazón", p: "Mansão" }, { m: "Cebolla", p: "Cebola" },
+        { m: "Cenari", p: "Jantar" }, { m: "Cento", p: "100" }, { m: "Cerchio", p: "Círculo" },
+        { m: "Ché", p: "Que / O que" }, { m: "Chiami", p: "Chamar" }, { m: "Chianti", p: "Cantar" },
+        { m: "Chiarie", p: "Cheirar" }, { m: "Chiartta", p: "Quarta-feira" }, { m: "China", p: "China" },
+        { m: "Ciao", p: "Tchau" }, { m: "Cielo", p: "Céu" }, { m: "Cienzi", p: "Ciência" },
+        { m: "Ciesttá", p: "Sexta-feira" }, { m: "Cinque", p: "5" }, { m: "Cinquanta", p: "50" },
+        { m: "Città", p: "Cidade" }, { m: "Color", p: "Cor" }, { m: "Come", p: "Como" },
+        { m: "Commandé", p: "Comando / Ordem" }, { m: "Commèn", p: "Comer" }, { m: "Compra", p: "Compra" },
+        { m: "Conosci", p: "Conhecer" }, { m: "Conoscertimento", p: "Conhecimento" }, { m: "Conosché", p: "Conosco / União" },
+        { m: "Continént", p: "Continente" }, { m: "Copo", p: "Copo" }, { m: "Corazione", p: "Coração" },
+        { m: "Corpus", p: "Corpo" }, { m: "Corpus Christi", p: "Corpus Christi" }, { m: "Corri", p: "Correr" },
+        { m: "Cosa", p: "Coisa" }, { m: "Couteau", p: "Faca" }, { m: "Coutión", p: "Espada" },
+        { m: "Creí", p: "Crer / Acreditar" }, { m: "Crimmè", p: "Crime" }, { m: "Cruché", p: "Cruz" },
+        { m: "Cualquer", p: "Qualquer" }, { m: "Cuanto", p: "Quanto" }, { m: "Cuarta", p: "Quarta" },
+        { m: "Cubo", p: "Cubo" }, { m: "Cucina", p: "Cozinha" }, { m: "Cuando", p: "Quando" },
+        { m: "Cuittá", p: "Cuidado / Cura" }, { m: "Curto / Curta", p: "Curto(a)" }, { m: "Cutanti", p: "Curar / Cuidar" },
+        { m: "Da", p: "De" }, { m: "D'", p: "De" }, { m: "Dá", p: "Dar" },
+        { m: "Dármtít", p: "Dermatite" }, { m: "Debidattá", p: "Endividada" }, { m: "Deccní", p: "Deixar" },
+        { m: "Deicchíari", p: "Deixar / Permitir" }, { m: "Déjà", p: "Já" }, { m: "Déjà vu", p: "Déjà vu" },
+        { m: "Déjàvut", p: "Familiar" }, { m: "Del", p: "Do" }, { m: "Dela", p: "Da" },
+        { m: "Desabuto", p: "Pouco" }, { m: "Desatermo", p: "Hipotermia" }, { m: "Desatese", p: "Incerteza / Hipótese" },
+        { m: "Desesperatto", p: "Desesperado" }, { m: "Destro", p: "Direita / Destro" }, { m: "Deux", p: "Deus" },
+        { m: "Dicio", p: "Dicionário" }, { m: "Diciasséis", p: "16" }, { m: "Diciassette", p: "17" },
+        { m: "Diciannove", p: "19" }, { m: "Diciotto", p: "18" }, { m: "Diece", p: "10" },
+        { m: "Diferi", p: "Diferente / Impostor" }, { m: "Dimensioné", p: "Dimensão" }, { m: "Dinero", p: "Dinheiro" },
+        { m: "Dipinti", p: "Pintar" }, { m: "Dir", p: "Dar" }, { m: "Disegni", p: "Desenhar / Desenhos" },
+        { m: "Disegno", p: "Desenho" }, { m: "Disquesément", p: "Disfarce" }, { m: "Disquesétement", p: "Mascarado(a)" },
+        { m: "Disposé", p: "Vontade" }, { m: "Divagué", p: "Devagar" }, { m: "Diviso", p: "Dividido" },
+        { m: "Doce", p: "Doce" }, { m: "Docento", p: "200" }, { m: "Donde", p: "Onde" },
+        { m: "Dormio", p: "Dormir" }, { m: "Douratto", p: "Dourado" }, { m: "Douze", p: "12" },
+        { m: "Duo", p: "2" }, { m: "E", p: "E" }, { m: "Edro", p: "Lado" },
+        { m: "Egalé", p: "Igual" }, { m: "Église", p: "Igreja" }, { m: "Elevatto", p: "Elevado" },
+        { m: "Elfaint", p: "Elefante" }, { m: "Emergenza", p: "Emergência" }, { m: "Emprezâggio", p: "Empresário" },
+        { m: "Enciclopedia", p: "Enciclopédia" }, { m: "Eruption", p: "Erupção" }, { m: "España", p: "Espanha" },
+        { m: "Esperanza", p: "Esperança" }, { m: "Espressi", p: "Expressar" }, { m: "Espressione", p: "Expressão" },
+        { m: "Esquerza", p: "Esquerda" }, { m: "Estado", p: "Estado" }, { m: "Esto", p: "Este / Esta" },
+        { m: "È", p: "Ser" }, { m: "Ético", p: "Ético" }, { m: "Expanssivo", p: "Caro" },
+        { m: "Facci", p: "Fazer" }, { m: "Facile", p: "Fácil" }, { m: "Famiglia", p: "Família" },
+        { m: "Febre", p: "Febre" }, { m: "Fecchí", p: "Fechar" }, { m: "Fellicè", p: "Feliz" },
+        { m: "Fé", p: "Fé" }, { m: "Feriado", p: "Feriado" }, { m: "Fiesta", p: "Festa / Natal" },
+        { m: "Fiesta de San Juan", p: "Festa Junina" }, { m: "Fíur", p: "Flor" }, { m: "Finaggi", p: "Fim / Sábado" },
+        { m: "Finaggi de la settimana", p: "Final de semana" }, { m: "Fogliono", p: "Primavera" }, { m: "Foglia", p: "Folha" },
+        { m: "Fora", p: "Fora" }, { m: "Formato", p: "Formato" }, { m: "Fount", p: "Fonte / Raiz" },
+        { m: "Fount quadrate", p: "Raiz quadrada" }, { m: "France", p: "França" }, { m: "Fratello", p: "Irmão" },
+        { m: "Frente", p: "Frente" }, { m: "Frutí", p: "Fruta" }, { m: "Fugieri", p: "Fugir" },
+        { m: "Fuogo", p: "Fogo" }, { m: "Gastri", p: "Estômago" }, { m: "Gastrit", p: "Gastrite" },
+        { m: "Genitori", p: "Pais" }, { m: "Germania", p: "Alemanha" }, { m: "Gianti", p: "Grande" },
+        { m: "Giappone", p: "Japão" }, { m: "Giocci", p: "Jogar" }, { m: "Giocco", p: "Jogo" },
+        { m: "Gittono", p: "Inverno" }, { m: "Governattá", p: "Governanta" }, { m: "Gracia", p: "Graça" },
+        { m: "Grados", p: "Graus" }, { m: "Graminea", p: "Grama / Gramínea" }, { m: "Grappo", p: "Uva" },
+        { m: "Grazi", p: "Obrigado" }, { m: "Gripo", p: "Gripe" }, { m: "Gruppo", p: "Grupo" },
+        { m: "Guardi", p: "Ver / Assistir" }, { m: "Heptagulo", p: "Heptágono" }, { m: "Hexagulo", p: "Hexágono" },
+        { m: "Hipertermo", p: "Hipertermia" }, { m: "Hominicidio", p: "Homicídio" }, { m: "Homo", p: "Humano" },
+        { m: "Hora", p: "Hora" }, { m: "In", p: "Em" }, { m: "Inflato", p: "Inflamado / Inflado" },
+        { m: "Inosce", p: "Inocente" }, { m: "Insetto", p: "Inseto" }, { m: "Intermezzo", p: "Intermediário / Interferência" },
+        { m: "Isla", p: "Ilha" }, { m: "Italia", p: "Itália" }, { m: "Jo", p: "Eu" },
+        { m: "Justicé", p: "Justiça / Justo" }, { m: "La", p: "A" }, { m: "Lait", p: "Leite" },
+        { m: "Laranché", p: "Laranja" }, { m: "Las", p: "As" }, { m: "Lava", p: "Lava / Magma" },
+        { m: "Lavoro", p: "Trabalho" }, { m: "Le", p: "O" }, { m: "Les", p: "Os" },
+        { m: "Lessé", p: "Leste" }, { m: "Letteré", p: "Letra" }, { m: "Letto", p: "Cama" },
+        { m: "Lià", p: "Ela" }, { m: "Lías", p: "Elas" }, { m: "Ligum", p: "Legume" },
+        { m: "Lindo", p: "Lindo" }, { m: "Lingua", p: "Língua / Idioma" }, { m: "Lion", p: "Leão" },
+        { m: "Lious", p: "Eles" }, { m: "Liso / Lisa", p: "Suave / Liso(a)" }, { m: "Lissaincè", p: "Com licença" },
+        { m: "Liù", p: "Ele" }, { m: "Livrairi", p: "Livrar" }, { m: "Loesté", p: "Oeste" },
+        { m: "Longo / Longa", p: "Longo(a)" }, { m: "Los Stades Conosché (LSA)", p: "Estados Unidos" }, { m: "Luna", p: "Lua" },
+        { m: "Luva", p: "Luva" }, { m: "Macaroni", p: "Macarrão" }, { m: "Madera", p: "Madeira" },
+        { m: "Madre", p: "Mãe" }, { m: "Male", p: "Mal" }, { m: "Maleta", p: "Mala" },
+        { m: "Mandarina", p: "Tangerina" }, { m: "Mango", p: "Manga" }, { m: "Mano", p: "Mão" },
+        { m: "Mar", p: "Mar" }, { m: "Martinè", p: "Nome da língua" }, { m: "Mas", p: "Mas" },
+        { m: "Masqué", p: "Máscara" }, { m: "Matina", p: "Manhã" }, { m: "Matita", p: "Lápis" },
+        { m: "Matiúcatto", p: "Machucado / Ferido" }, { m: "Medicina", p: "Remédio / Medicina" }, { m: "Medo", p: "Medo" },
+        { m: "Messé", p: "Mês" }, { m: "Mettá-notte", p: "Meia-noite" }, { m: "Mexico", p: "México" },
+        { m: "Mi", p: "Meu / Me" }, { m: "Miado", p: "Miado" }, { m: "Mille", p: "1000" },
+        { m: "Miltonéur", p: "Milionário" }, { m: "Millone", p: "Milhão" }, { m: "Mins", p: "Menos" },
+        { m: "Minuto", p: "Minuto" }, { m: "Miracoli", p: "Milagre" }, { m: "Mistéur", p: "Mistério" },
+        { m: "Mocca", p: "Vaca" }, { m: "Molto", p: "Muito" }, { m: "Mono", p: "Macaco" },
+        { m: "Montagna", p: "Montanha" }, { m: "Mouge", p: "Mugido" }, { m: "Muerte", p: "Morte" },
+        { m: "Multiplicato", p: "Multiplicado" }, { m: "Musica", p: "Música" }, { m: "Natación", p: "Natação" },
+        { m: "Natale", p: "Natal" }, { m: "Ne", p: "Não" }, { m: "Necessiti", p: "Necessitar" },
+        { m: "Negro", p: "Preto" }, { m: "Nel", p: "No" }, { m: "Nenuno", p: "Nenhum / Ninguém" },
+        { m: "Noi", p: "Nós" }, { m: "Nome", p: "Nome" }, { m: "Non", p: "Não" },
+        { m: "Nonna", p: "Avó" }, { m: "Nonno", p: "Avô" }, { m: "Norte", p: "Norte" },
+        { m: "Nortessé", p: "Nordeste" }, { m: "Norresté", p: "Noroeste" }, { m: "Nostri", p: "Nosso/Nossa" },
+        { m: "Notte", p: "Noite" }, { m: "Nove", p: "9" }, { m: "Novecento", p: "900" },
+        { m: "Noventa", p: "90" }, { m: "Nuovo anno", p: "Ano Novo" }, { m: "Nuvoloso", p: "Nublado" },
+        { m: "Oceano", p: "Oceano" }, { m: "Occidari", p: "Matar" }, { m: "Occulti", p: "Ocultar / Esconder" },
+        { m: "Octagulo", p: "Octógono" }, { m: "Odiare", p: "Odiar / Vaiar" }, { m: "Ódio", p: "Ódio" },
+        { m: "Offensedo", p: "Ofendido" }, { m: "Oggi", p: "Hoje" }, { m: "Oitenta", p: "80" },
+        { m: "Onda", p: "Onda" }, { m: "Onti", p: "Ontem" }, { m: "Onze", p: "11" },
+        { m: "Otto", p: "8" }, { m: "Ottocento", p: "800" }, { m: "Ouro", p: "Ouro" },
+        { m: "Ovo", p: "Ovo" }, { m: "Pacciono", p: "Paixão" }, { m: "Padre", p: "Pai" },
+        { m: "Paise", p: "País" }, { m: "Paix", p: "Paz" }, { m: "Pane", p: "Pão" },
+        { m: "Para", p: "Para" }, { m: "Parapluvio", p: "Guarda-chuva" }, { m: "Pardoi", p: "Perdoar" },
+        { m: "Pardon", p: "Perdão / Desculpa" }, { m: "Parente", p: "Parente" }, { m: "Parlì", p: "Falar" },
+        { m: "Parlatta", p: "Palavra" }, { m: "Pascoal", p: "Páscoa" }, { m: "Passiari", p: "Passar" },
+        { m: "Patata", p: "Batata" }, { m: "Patriárc", p: "Patriarca" }, { m: "Peccino", p: "Pequeno" },
+        { m: "Pecatto", p: "Pecado" }, { m: "Peggi", p: "Pegar" }, { m: "Pele", p: "Pele" },
+        { m: "Pentagulo", p: "Pentágono" }, { m: "Pentallone", p: "Quintilhão" }, { m: "Per", p: "Por" },
+        { m: "Per ché", p: "Por quê?" }, { m: "Per favore", p: "Por favor" }, { m: "Perigo", p: "Perigo" },
+        { m: "Perna", p: "Perna" }, { m: "Pesce", p: "Peixe" }, { m: "Peschiani", p: "Pescar" },
+        { m: "Pesquisa", p: "Pesquisa / Busca" }, { m: "Petra", p: "Pedra" }, { m: "Philosophia", p: "Filosofia" },
+        { m: "Piace", p: "Gostar" }, { m: "Piano", p: "Piano" }, { m: "Picollo / Picolla", p: "Menino(a) / Criança" },
+        { m: "Piedi", p: "Pé / Pés" }, { m: "Piña", p: "Pinheiro" }, { m: "Pioneiro", p: "Primeiro / Pioneiro" },
+        { m: "Pionisso", p: "Domingo" }, { m: "Planta", p: "Planta" }, { m: "Plátano", p: "Banana" },
+        { m: "Plait", p: "Prato" }, { m: "Plíus", p: "Mais" }, { m: "Pluvio", p: "Chuva" },
+        { m: "Pluviari", p: "Chover" }, { m: "Poema", p: "Poema" }, { m: "Pomme", p: "Maçã" },
+        { m: "Portogale", p: "Portugal" }, { m: "Precisachíári", p: "Precisar" }, { m: "Prezzo", p: "Trancado / Preso" },
+        { m: "Psicono", p: "Cérebro / Mente" }, { m: "Puedi", p: "Poder" }, { m: "Pyramide", p: "Pirâmide" },
+        { m: "Quadrato", p: "Quadrado" }, { m: "Quadrillone", p: "Quatrilhão" }, { m: "Quarenta", p: "40" },
+        { m: "Quartoi", p: "4" }, { m: "Quatrocento", p: "400" }, { m: "Queso", p: "Queijo" },
+        { m: "Qui", p: "Quem" }, { m: "Quién", p: "Quem" }, { m: "Quinta", p: "Quinta / Quinta-feira" },
+        { m: "Quinze", p: "15" }, { m: "Quintocento", p: "500" }, { m: "Quoi", p: "Quem" },
+        { m: "Ragazzo(a)", p: "Adulto(a)" }, { m: "Raiva", p: "Raiva / Ódio" }, { m: "Rassè", p: "Raça" },
+        { m: "Recente", p: "Recente" }, { m: "Regno", p: "Reino" }, { m: "Rellogio", p: "Relógio" },
+        { m: "Reptil", p: "Réptil" }, { m: "Reta", p: "Reta" }, { m: "Rey", p: "Rei" },
+        { m: "Rima", p: "Rima" }, { m: "Rino", p: "Nariz" }, { m: "Rinít", p: "Rinite" },
+        { m: "Rippogio", p: "Repolho" }, { m: "Rispettatto", p: "Respeitado" }, { m: "Rispetto", p: "Respeito" },
+        { m: "River", p: "Rio" }, { m: "Rogue", p: "Rogar / Orar" }, { m: "Rossia", p: "Rússia" },
+        { m: "Sacerdoth", p: "Sacerdote / Padre" }, { m: "Sagrado", p: "Sagrado" }, { m: "Saint", p: "Santo(a)" },
+        { m: "Saldato", p: "Saudade" }, { m: "Salgato", p: "Salgado" }, { m: "Salvación", p: "Salvação" },
+        { m: "Salvador", p: "Salvador" }, { m: "Sangue", p: "Sangue" }, { m: "Santificato", p: "Santificado" },
+        { m: "Scappéur", p: "Escapada / Fuga" }, { m: "Secento", p: "600" }, { m: "Seccúnda", p: "Segunda-feira" },
+        { m: "Secondo", p: "Segundo" }, { m: "Secrète", p: "Segredo / Secreto" }, { m: "Secunda", p: "Segunda" },
+        { m: "Seis", p: "6" }, { m: "Semente", p: "Semente" }, { m: "Semente dela piña", p: "Pinha" },
+        { m: "Sentiment", p: "Sentimento" }, { m: "Señor / Señora", p: "Idoso(a) / Senhor(a)" }, { m: "Serpe", p: "Cobra" },
+        { m: "Sessenta", p: "60" }, { m: "Setecento", p: "700" }, { m: "Setenta", p: "70" },
+        { m: "Sétima", p: "Sábado" }, { m: "Settimana", p: "Semana" }, { m: "Sfír", p: "Esfera" },
+        { m: "Síére", p: "Ser" }, { m: "Siét", p: "7" }, { m: "Significato", p: "Significado" },
+        { m: "Sí", p: "Sim" }, { m: "Sobriño", p: "Sobrinho" }, { m: "Société", p: "Sócio" },
+        { m: "Soja", p: "Soja" }, { m: "Solo", p: "Sol" }, { m: "Solorato", p: "Ensolarado" },
+        { m: "Sono", p: "Som" }, { m: "Sorella", p: "Irmã" }, { m: "Sport", p: "Esporte" },
+        { m: "Stade", p: "Estado" }, { m: "Stai", p: "Estar" }, { m: "Strada", p: "Estrada / Rua" },
+        { m: "Strelato / Strelata", p: "Favorito(a)" }, { m: "Stroff", p: "Estrofe" }, { m: "Succo", p: "Suco" },
+        { m: "Sul", p: "Sul" }, { m: "Sulesté", p: "Sudeste" }, { m: "Suloesté", p: "Sudoeste" },
+        { m: "Superficie", p: "Superfície" }, { m: "Suspéur", p: "Suspeito" }, { m: "Tablero", p: "Tabuleiro" },
+        { m: "Taglia", p: "Corte / Ferimento" }, { m: "Tartaruga", p: "Tartaruga" }, { m: "Tazza", p: "Taça" },
+        { m: "Te", p: "Te" }, { m: "Tempestad", p: "Tempestade" }, { m: "Tempo", p: "Tempo" },
+        { m: "Tennis", p: "Tênis" }, { m: "Teoria", p: "Teoria / Tese" }, { m: "Terrè", p: "Terra" },
+        { m: "Terzeira", p: "Terceira" }, { m: "Tiburón", p: "Tubarão" }, { m: "Tifuon", p: "Tufão" },
+        { m: "Tigre", p: "Tigre" }, { m: "Tocciari", p: "Tocar" }, { m: "Toilette", p: "Banheiro" },
+        { m: "Tom", p: "Tom" }, { m: "Tomate", p: "Tomate" }, { m: "Traición", p: "Traição" },
+        { m: "Trasso", p: "Traço" }, { m: "Trazo", p: "Atrás" }, { m: "Tre", p: "3" },
+        { m: "Trecento", p: "300" }, { m: "Treize", p: "13" }, { m: "Treno", p: "Trem" },
+        { m: "Trenta", p: "30" }, { m: "Trezá", p: "Terça-feira" }, { m: "Triangulo", p: "Triângulo" },
+        { m: "Trigo", p: "Trigo" }, { m: "Trillone", p: "Trilhão" }, { m: "Trillonéur", p: "Trilionário" },
+        { m: "Triste", p: "Triste" }, { m: "Tsunami", p: "Tsunami" }, { m: "Tú", p: "Tu / Você" },
+        { m: "Tui", p: "Teu/Tua" }, { m: "Umami", p: "Umami" }, { m: "Una", p: "Uma" },
+        { m: "Une", p: "Um" }, { m: "Uno", p: "1" }, { m: "Unos / Unas", p: "Uns / Umas" },
+        { m: "Vaia", p: "Vaiar" }, { m: "Valle", p: "Vale" }, { m: "Veggie", p: "Vegetal" },
+        { m: "Veloce", p: "Rápido / Veloz" }, { m: "Veniri", p: "Vir" }, { m: "Vento", p: "Vento" },
+        { m: "Verono", p: "Verão" }, { m: "Vérse", p: "Verso" }, { m: "Via", p: "Ir" },
+        { m: "Viaggi", p: "Viajar" }, { m: "Viño", p: "Vinho" }, { m: "Viola", p: "Viola" },
+        { m: "Viollino", p: "Violino" }, { m: "Vinte", p: "20" }, { m: "Virmiggio", p: "Vermelho" },
+        { m: "Virose", p: "Vírus" }, { m: "Virussi", p: "Virose" }, { m: "Vischíto", p: "Visitante / Turista" },
+        { m: "Voi", p: "Vós / Vocês" }, { m: "Volcano", p: "Vulcão" }, { m: "Volley", p: "Vôlei" },
+        { m: "Voria", p: "Querer" }, { m: "Vostro", p: "Vosso/Vossa" }, { m: "Voyage", p: "Viagem" },
+        { m: "Xilograffo", p: "Xilografia" }, { m: "Yaj", p: "Oi" }, { m: "Yoga", p: "Yoga" },
+        { m: "Zero", p: "0" }, { m: "Zoo", p: "Zoológico" }
+    ];
+
+    const letras = ["Todas", ..."ABCDEFGHIJLMNOPQRSTUVXYZ".split("")];
+    let indiceLetra = 0;
+
+    function atualizarSeletor() {
+        document.getElementById('letraAtual').textContent = letras[indiceLetra];
+        document.getElementById('setaEsq').disabled = indiceLetra === 0;
+        document.getElementById('setaDir').disabled = indiceLetra === letras.length - 1;
+    }
+
+    function mudarLetra(direcao) {
+        const novo = indiceLetra + direcao;
+        if (novo < 0 || novo >= letras.length) return;
+        indiceLetra = novo;
+        atualizarSeletor();
+        filtrarDicionario();
+    }
+
+    function normalizar(txt) {
+        return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function filtrarDicionario() {
+        const busca = normalizar(document.getElementById('buscaDict').value.trim());
+        const lista = document.getElementById('listaDict');
+        const contador = document.getElementById('contadorResultados');
+        const letraAtual = letras[indiceLetra];
+
+        let resultados = dicionario.filter(e => {
+            if (letraAtual !== "Todas") {
+                if (normalizar(e.m)[0] !== normalizar(letraAtual)) return false;
+            }
+            if (busca) {
+                return normalizar(e.m).includes(busca) || normalizar(e.p).includes(busca);
+            }
+            return true;
+        });
+
+        contador.textContent = `${resultados.length} ${resultados.length === 1 ? 'palavra' : 'palavras'}`;
+
+        if (resultados.length === 0) {
+            lista.innerHTML = '<div class="sem-resultado">Nenhuma palavra encontrada</div>';
+            return;
+        }
+
+        lista.innerHTML = resultados.map(e => `
+            <div class="entrada-dict">
+                <span class="termo">${e.m}</span>
+                <span class="traducao">${e.p}</span>
+            </div>
+        `).join('');
+    }
+
+    atualizarSeletor();
+    filtrarDicionario();
+</script>
+</body>
+</html>
